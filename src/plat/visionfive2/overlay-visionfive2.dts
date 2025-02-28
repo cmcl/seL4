@@ -1,0 +1,32 @@
+/*
+ * Copyright 2023, Ivan Velickovic
+ * Copyright 2025, UNSW
+ *
+ * SPDX-License-Identifier: GPL-2.0-only
+ */
+
+/ {
+
+    chosen {
+        seL4,kernel-devices =
+            &{/soc/clint@2000000},
+            &{/soc/interrupt-controller@c000000};
+    };
+
+    /* The VisionFive-2 V1-3B supports 8GB of RAM. */
+    memory@40000000 {
+        device_type = "memory";
+        reg = <0x00 0x40000000 0x02 0x00>;
+    };
+
+    /*
+     * According to the StarFive JH7110 SoC manual
+     * the CLINT is mapped from 0x0200_0000 to 0x0200_FFFF.
+     */
+    soc {
+        clint@2000000 {
+            compatible = "riscv,cpu-intc";
+            reg = <0x00000000 0x2000000 0x00000000 0x000010000>;
+        };
+    };
+};

@@ -18,7 +18,8 @@
     !defined(CONFIG_PLAT_ROCKETCHIP_ZCU102) && \
     !defined(CONFIG_PLAT_STAR64) && \
     !defined(CONFIG_PLAT_CHESHIRE) && \
-    !defined(CONFIG_PLAT_ARIANE)
+    !defined(CONFIG_PLAT_ARIANE) && \
+    !defined(CONFIG_PLAT_VISIONFIVE2)
 #error "Check if this platform supports a PLIC."
 #endif
 
@@ -57,7 +58,8 @@
 
 #if defined(CONFIG_PLAT_HIFIVE) || \
     defined(CONFIG_PLAT_POLARFIRE) || \
-    defined(CONFIG_PLAT_STAR64)
+    defined(CONFIG_PLAT_STAR64) || \
+    defined(CONFIG_PLAT_VISIONFIVE2)
 
 /* SiFive U54-MC and U74-MC have 5 cores, and the first core does not have
  * supervisor mode. Therefore, we need to compensate for the addresses.
